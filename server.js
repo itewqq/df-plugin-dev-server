@@ -1,7 +1,7 @@
 import * as path from "path";
 import * as http from "http";
 import { URL } from "url";
-import * as fs from "fs/promises";
+import { promises as fs } from 'fs';
 import * as esbuild from "esbuild";
 import getPort from "get-port";
 import { default as chalk } from "chalk";
@@ -114,6 +114,7 @@ export async function start({ dir, ext, glob, preact }) {
   };
 
   const esbuildConfig = {
+    sourcemap: true,
     entryPoints: entryPoints,
     ...getDefaultConfig(),
     ...getExtraConfig(preact),
@@ -168,7 +169,7 @@ class Plugin {
   }
   async render(container) {
     const cacheBust = Date.now();
-    const modulePath = "${pathname}?" + cacheBust;
+    const modulePath = "/PluginTemplate.js?" + cacheBust;
     const { default: RevealMarket } = await import(modulePath);
     this.plugin = new RevealMarket();
     await this.plugin?.render?.(container);

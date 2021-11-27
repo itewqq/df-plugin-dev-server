@@ -106,3 +106,4 @@ dist
 # npm packages after install
 node_modules
 package-lock.json
+/.vscode/
