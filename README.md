@@ -60,7 +60,7 @@ However, Dark Forest plugins are cached, so you'd need to do some sort of cache 
 
 ```js
 // Notice the ?dev
-export { default } from "http://127.0.0.1:2222/PluginTemplate.js?dev";
+export { default } from "http://127.0.0.1:2222/?dev";
 ```
 
 Doing the above will proxy your plugin through a cache busting plugin!
